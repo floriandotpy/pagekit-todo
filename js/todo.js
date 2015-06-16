@@ -1,7 +1,6 @@
-jQuery(function ($) {
+$(function(){
 
-
-    var vm = new Vue({
+    new Vue({
 
         el: '#todo',
 
@@ -25,8 +24,7 @@ jQuery(function ($) {
                 this.newEntry = '';
             },
 
-            toggle: function(entry, e) {
-                e.preventDefault();
+            toggle: function(entry) {
                 entry.done = !entry.done;
             },
 
@@ -34,16 +32,9 @@ jQuery(function ($) {
                 this.config.entries.$remove(entry);
             },
 
-            edit: function(entry) {
-                this.newEntry = entry.message;
-                this.remove(entry);
-                this.$$.newEntry.focus();
-            },
+            save: function() {
 
-            save: function(e) {
-                e.preventDefault();
-
-                this.$http.post('admin/example/save', { name: 'example', config: this.config }, function() {
+                this.$http.post('admin/example/save', { config: this.config }, function() {
                     UIkit.notify(vm.$trans('Saved.'), '');
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');

@@ -8,13 +8,6 @@ return [
 
     'main' => function(Application $app) {
 
-        $app->on('app.site', function() {
-//            echo "Hello user.";
-        });
-
-        $app->on('app.admin', function() {
-//            echo "Hello admin.";
-        });
     },
 
     'autoload' => [
@@ -52,9 +45,6 @@ return [
             'access' => 'example: manage'
         ]
 
-
     ],
-
-
 
 ];

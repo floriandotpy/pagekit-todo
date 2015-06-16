@@ -1,41 +1,30 @@
 <?php $view->script('todo', 'example:js/todo.js', 'vue') ?>
 
-<h1>TODO</h1>
+<div id="todo" class="uk-form">
 
-<form v-on="submit: add" id="todo" class="uk-form">
+    <button v-on="click: save" class="uk-button uk-button-primary uk-align-right">Save</button>
 
-    <div class="uk-align-right">
-        <a href="" v-on="click: save" class="uk-button uk-button-primary">Save</a>
-    </div>
+    <h2>{{ config.entries.length }} Tasks</h2>
 
-    <div>
-        <input v-model="newEntry"
-               v-el="newEntry"
-               class="uk-input-large uk-width-1-2"
-               placeholder="I need to...">
+    <form class="uk-width-large-2-3" v-on="submit: add">
+        <input class="uk-input-large uk-width-3-4" v-model="newEntry" v-el="newEntry" placeholder="New Task">
+        <button class="uk-button" v-on="click: add">Add</button>
+    </form>
 
-        <input type="submit" class="uk-button" v-on="click: add" value="Add Task">
-    </div>
+    <hr>
 
-    <hr/>
+    <div class="uk-alert" v-if="!config.entries.length">You can add your first task using the input field above. Go ahead!</div>
 
-    <div v-show="config.entries.length">
-        <h2>Tasks ({{ config.entries.length }})</h2>
+    <ul class="uk-list uk-list-line" v-if="config.entries.length">
+        <li v-repeat="entry: config.entries" class="uk-text-large" v-class="uk-text-muted: entry.done">
 
-        <table class="uk-table">
+            <span class="uk-align-right">
+                <button v-on="click: toggle(entry)" class="uk-button">{{ entry.done ? "Undo" : "Do" }}</button>
+                <button v-on="click: remove(entry)" class="uk-button uk-button-danger" v-if="entry.done"><i class="uk-icon-remove"></i></button>
+            </span>
 
-            <tr v-repeat="entry: config.entries">
+            {{ entry.message }}
+        </li>
+    </ul>
 
-                <td v-on="dblclick: edit(entry)" class=" uk-h3 {{ entry.done ? 'uk-text-muted' : '' }}">{{ entry.message }}</td>
-                <td>
-                    <button v-on="click: edit(entry)" class="uk-button">Edit</button>
-                    <button v-on="click: toggle(entry, $event)" class="uk-button"><i class="uk-icon-check" v-id="!entry.done"></i> {{ (entry.done ? "Undo" : "Done" )}}</button>
-                    <button v-on="click: remove(entry)" class="uk-button uk-button-danger" v-if="entry.done"><i class="uk-icon-remove"></i></button>
-                </td>
-
-            </tr>
-        </table>
-    </div>
-
-</form>
-
+</div>
