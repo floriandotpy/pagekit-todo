@@ -27,20 +27,18 @@ class ExampleController
     }
 
     /**
-     * @Request({"config": "array"}, csrf=true)
+     * @Request({"entries": "array"}, csrf=true)
      * @Access(admin=true)
      */
-    public function saveAction($config = [])
+    public function saveAction($entries = [])
     {
-//        App::config('example')->merge($config, true);
-
-        App::config('example')->set('entries', $config['entries']);
+        App::config('example')->set('entries', $entries);
 
         return ['message' => 'success'];
     }
 
     /**
-     *
+     * @Route("/")
      */
     public function siteAction()
     {

@@ -1,11 +1,11 @@
 $(function(){
 
-    new Vue({
+    var vm = new Vue({
 
         el: '#todo',
 
         data: {
-            config: window.$data.config,
+            entries: window.$data.config.entries,
             newEntry: ''
         },
 
@@ -16,7 +16,7 @@ $(function(){
 
                 if(!this.newEntry) return;
 
-                this.config.entries.push({
+                this.entries.push({
                     message: this.newEntry,
                     done: false
                 });
@@ -29,12 +29,12 @@ $(function(){
             },
 
             remove: function(entry) {
-                this.config.entries.$remove(entry);
+                this.entries.$remove(entry);
             },
 
             save: function() {
 
-                this.$http.post('admin/example/save', { config: this.config }, function() {
+                this.$http.post('admin/example/save', { entries: this.entries }, function() {
                     UIkit.notify(vm.$trans('Saved.'), '');
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');
