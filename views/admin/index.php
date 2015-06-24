@@ -1,4 +1,4 @@
-<?php $view->script('todo', 'example:js/todo.js', 'vue') ?>
+<?php $view->script('todo', 'todo:js/todo.js', 'vue') ?>
 
 <div id="todo" class="uk-form">
 

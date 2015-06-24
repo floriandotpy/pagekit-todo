@@ -4,26 +4,23 @@ use Pagekit\Application;
 
 return [
 
-    'name' => 'example',
+    'name' => 'todo',
 
     'main' => function(Application $app) {
-
     },
 
     'autoload' => [
-        'Pagekit\\Example\\' => 'src'
+        'Pagekit\\Todo\\' => 'src'
     ],
 
     'resources' => [
-        'example:' => ''
+        'todo:' => ''
     ],
 
     'routes' => [
-        '@example' => [
-            'path' => '/example',
-            'controller' => [
-                'Pagekit\\Example\\Controller\\ExampleController'
-            ]
+        '@todo' => [
+            'path' => '/todo',
+            'controller' => 'Pagekit\\Todo\\Controller\\TodoController'
         ]
     ],
 
@@ -37,12 +34,12 @@ return [
 
     'menu' => [
 
-        'example' => [
-            'label'  => 'Example',
+        'todo' => [
+            'label'  => 'ToDo',
             'icon'   => 'app/system/assets/images/placeholder-icon.svg',
-            'url'    => '@example',
-            'active' => '@example/*',
-            'access' => 'example: manage'
+            'url'    => '@todo',
+            'active' => '@todo/*',
+            'access' => 'todo: manage'
         ]
 
     ],

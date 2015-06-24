@@ -1,10 +1,10 @@
 <?php
 
-namespace Pagekit\Example\Controller;
+namespace Pagekit\Todo\Controller;
 
 use Pagekit\Application as App;
 
-class ExampleController
+class TodoController
 {
     /**
      * @Access(admin=true)
@@ -12,12 +12,13 @@ class ExampleController
     public function indexAction()
     {
 
-        $config = App::config('example');
+        $module = App::module('todo');
+        $config = $module->config;
 
         return [
             '$view' => [
                 'title' => __("TODO"),
-                'name' => 'example:views/admin/index.php'
+                'name' => 'todo:views/admin/index.php'
             ],
             '$data' => [
                 'config' => $config
@@ -32,7 +33,7 @@ class ExampleController
      */
     public function saveAction($entries = [])
     {
-        App::config('example')->set('entries', $entries);
+        App::config('todo')->set('entries', $entries);
 
         return ['message' => 'success'];
     }
@@ -43,12 +44,13 @@ class ExampleController
     public function siteAction()
     {
 
-        $config = App::config('example');
+        $module = App::module('todo');
+        $config = $module->config;
 
         return [
             '$view' => [
                 'title' => __("TODOs"),
-                'name' => 'example:views/index.php'
+                'name' => 'todo:views/index.php'
             ],
 
             'entries' => $config['entries']

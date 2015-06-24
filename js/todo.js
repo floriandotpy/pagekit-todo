@@ -34,7 +34,7 @@ $(function(){
 
             save: function() {
 
-                this.$http.post('admin/example/save', { entries: this.entries }, function() {
+                this.$http.post('admin/todo/save', { entries: this.entries }, function() {
                     UIkit.notify(vm.$trans('Saved.'), '');
                 }).error(function(data) {
                     UIkit.notify(data, 'danger');
