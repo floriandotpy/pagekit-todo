@@ -1,0 +1,6 @@
+{
+  "name": "florianletsch/todo",
+  "version": "0.1",
+  "type": "pagekit-extension",
+  "title": "ToDo management"
+}
