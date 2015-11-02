@@ -6,9 +6,8 @@ return [
 
     'name' => 'todo',
 
-    'type' => 'extension',
-
     'main' => function(Application $app) {
+
     },
 
     'autoload' => [
