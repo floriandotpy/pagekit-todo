@@ -35,9 +35,9 @@ $(function(){
             save: function() {
 
                 this.$http.post('admin/todo/save', { entries: this.entries }, function() {
-                    UIkit.notify(vm.$trans('Saved.'), '');
+                    this.notify(this.$trans('Saved.'), '');
                 }).error(function(data) {
-                    UIkit.notify(data, 'danger');
+                    this.notify(data, 'danger');
                 });
             }
 
