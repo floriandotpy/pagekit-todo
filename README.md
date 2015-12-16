@@ -1,4 +1,4 @@
-# pagekit-todo
+# example-todo
 
 Example extension for the [Pagekit CMS](https://github.com/pagekit/pagekit). This code is the completed example of the tutorial series on the [Pagekit Blog](https://pagekit.com/blog).
 
