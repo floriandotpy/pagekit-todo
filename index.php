@@ -26,11 +26,7 @@ return [
     ],
 
     'config' => [
-        'entries' => [
-            ['message' => 'Buy milk.', 'done' => false],
-            ['message' => 'Read book.', 'done' => false],
-            ['message' => 'Drink coffee.', 'done' => true]
-        ]
+        'entries' => []
     ],
 
     'menu' => [
